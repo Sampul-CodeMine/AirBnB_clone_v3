@@ -34,13 +34,14 @@ def get_one_state(state_id):
 def delete_one_state(state_id=None):
     """this is a function that deletes a specified state when the
     /states/states_id route is reached"""
-    result = storage.get(State, state_id)
-    if result is None:
-        raise NotFound()
-    result.delete()
-    storage.save()
-    return jsonify({}), 200
-    
+    result = storage.all(State).values()
+    state = list(filter(lambda x: x.id == state_id, result))
+    if state:
+        storage.delete(state[0])
+        storage.save()
+        return jsonify({}), 200
+    raise NotFound()
+
 
 @app_views.route("/states", methods=["POST"], strict_slashes=False)
 def create_state(state_id=None):
