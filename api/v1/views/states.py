@@ -29,20 +29,18 @@ def get_one_state(state_id):
         raise NotFound()
 
 
-@app_views.route("/states/<state_id>", methods=["DELETE", "GET"],
+@app_views.route("/states/<state_id>", methods=["DELETE"],
                  strict_slashes=False)
 def delete_one_state(state_id=None):
     """this is a function that deletes a specified state when the
     /states/states_id route is reached"""
-    result = storage.all(State).values()
-    if state_id:
-        one_state = list(filter(lambda x: x.id == state_id, result))
-        if one_state:
-            storage.delete(one_state[0])
-            storage.save()
-            return jsonify({}), 200
-    raise NotFound()
-
+    result = storage.get(State, state_id)
+    if result is None:
+        raise NotFound()
+    result.delete()
+    storage.save()
+    return jsonify({}), 200
+    
 
 @app_views.route("/states", methods=["POST"], strict_slashes=False)
 def create_state(state_id=None):
