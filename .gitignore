@@ -6,3 +6,6 @@ tests/test_models/__pycache__/*
 tests/test_models/test_engine/__pycache__/*
 *.swp
 *.pyc
+api/__pycache__/*
+api/v1/__pycache__/*
+api/v1/views/__pycache__/*

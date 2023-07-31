@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-'''Module that contains the index view for the API.'''
+"""
+Module that contains the index view for the API
+"""
 from flask import jsonify
 from api.v1.views import app_views
 from models import storage
@@ -22,12 +24,12 @@ def statistics():
     """This is a route /api/stats that displays the statistical count for each
     object"""
     all_models = {
-        "amenities" : Amenity,
-        "cities" : City,
-        "places" : Place,
-        "reviews" : Review,
-        "states" : State,
-        "users" : User
+        "amenities": Amenity,
+        "cities": City,
+        "places": Place,
+        "reviews": Review,
+        "states": State,
+        "users": User
     }
     for item, val in all_models.items():
         all_models[item] = storage.count(val)
