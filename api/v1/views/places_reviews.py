@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This is a module that contains views for the Users for this API"""
+"""This is a module that contains views for the Places Reviews for this API"""
 from flask import abort
 from flask import jsonify
 from flask import make_response
