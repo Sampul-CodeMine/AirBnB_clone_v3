@@ -16,7 +16,7 @@ from models.user import User
 def get_place_reviews(place_id):
     """This is a function that retrieves all reviews for a place when the
     /places/places_id/reviews route is reached"""
-    places = storage.all(Place, place_id)
+    places = storage.get(Place, place_id)
     if places:
         reviews = []
         for review in places.reviews:
