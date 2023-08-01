@@ -25,8 +25,17 @@ def teardown_flask(exception):
 
 @app.errorhandler(404)
 def error_404_handler(error):
-    """This function handles 404 errors"""
+    """This function handles HTTP request 404 errors"""
     return jsonify(error='Not found'), 404
+
+
+@app.errorhandler(400)
+def error_400_handler(error):
+    """This function handles HTTP request 400 errors"""
+    status = 'Bad request'
+    if hasattr(error, 'description') and isinstance(error, Exception):
+        status = error.description
+    return jsonify(error=status), 400
 
 
 if __name__ == "__main__":
