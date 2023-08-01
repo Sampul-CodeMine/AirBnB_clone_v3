@@ -21,7 +21,7 @@ def get_place_reviews(place_id):
         reviews = []
         for review in places.reviews:
             reviews.append(review.to_dict())
-        return jsonify(reviews)        
+        return jsonify(reviews)
     abort(404)
 
 
