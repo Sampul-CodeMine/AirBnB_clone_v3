@@ -78,7 +78,7 @@ def create_review(place_id):
 
 @app_views.route('/reviews/<review_id>', methods=['PUT'],
                  strict_slashes=False)
-def update_one_user(review_id):
+def update_one_review(review_id):
     """this is a function that updates one review with a specified id
     when the /reviews/<review_id> route is reached"""
     result = storage.all(Review).values()
